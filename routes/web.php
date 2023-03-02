@@ -47,8 +47,8 @@ Route::get('/profile/{logeduser:username}/followers', [UserController::class, 'p
 Route::get('/profile/{logeduser:username}/following', [UserController::class, 'profileFollowing'])->middleware('auth');
 
 Route::get('/profile/{logeduser:username}/raw', [UserController::class, 'profileRaw'])->middleware('auth');
-Route::get('/profile/{logeduser:username}/followers/raw', [UserController::class, 'profileFollowersRwa'])->middleware('auth');
-Route::get('/profile/{logeduser:username}/following/raw', [UserController::class, 'profileFollowingRwa'])->middleware('auth');
+Route::get('/profile/{logeduser:username}/followers/raw', [UserController::class, 'profileFollowersRaw'])->middleware('auth');
+Route::get('/profile/{logeduser:username}/following/raw', [UserController::class, 'profileFollowingRaw'])->middleware('auth');
 
 //chat related route
 Route::post('/send-chat-message',function (Request $request){

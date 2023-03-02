@@ -85,7 +85,7 @@ class UserController extends Controller
 
       public function profileFollowingRaw(User $logeduser){
         
-        return response()->json(['theHTML'=>view('profile-following-only', [ 'following'=> $logeduser->following()->latest()->get() ] )->render(), 'docTitle'=>"Who" . $logeduser->username . " Follows"]);
+        return response()->json(['theHTML'=>view('profile-following-only', [ 'following'=> $logeduser->followingTheseUsers()->latest()->get() ] )->render(), 'docTitle'=>"Who" . $logeduser->username . " Follows"]);
        
      }   
 
