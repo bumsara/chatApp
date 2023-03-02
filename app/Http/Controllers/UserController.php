@@ -59,8 +59,7 @@ class UserController extends Controller
 
     public function profileRaw(User $logeduser){
 
-        $this->getSharedData($logeduser);
-        return view('profile-posts',[ 'posts'=> $logeduser->posts()->latest()->get() ]);
+        return response()->json(['theHTML'=>view('profile-posts-only', [ 'posts'=> $logeduser->posts()->latest()->get() ] )->render(), 'docTitle'=>$logeduser->username . "'s Profile"]);
        
         }
 
@@ -71,6 +70,12 @@ class UserController extends Controller
        
      }
 
+     public function profileFollowersRaw(User $logeduser){
+
+        return response()->json(['theHTML'=>view('profile-followers-only', [ 'followers'=> $logeduser->followers()->latest()->get() ] )->render(), 'docTitle'=>$logeduser->username . "'s Followers"]);
+       
+     }
+
     public function profileFollowing(User $logeduser){
         
         $this->getSharedData($logeduser);
@@ -78,7 +83,11 @@ class UserController extends Controller
        
      }
 
+      public function profileFollowingRaw(User $logeduser){
         
+        return response()->json(['theHTML'=>view('profile-following-only', [ 'following'=> $logeduser->following()->latest()->get() ] )->render(), 'docTitle'=>"Who" . $logeduser->username . " Follows"]);
+       
+     }   
 
     public function logout(){
     auth()->logout();
